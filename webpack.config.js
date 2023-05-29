@@ -10,16 +10,25 @@ module.exports = {
     },
     module: {
         rules: [
+          // Rule for CSS files
         {
-            test: /\.css$/i,
+            test: /\.css$/,
             use: ['style-loader', 'css-loader'],
         },
+          // Rule for image files
         {
-            test: /\.(png|svg|jpg|jpeg|gif)$/i,
-            type: 'asset/resource',
-            
+            test: /\.(png|jpe?g|gif|svg)$/,
+            use: [
+            {
+                loader: 'file-loader',
+                options: {
+                    name: '[name].[ext]',
+                    outputPath: 'images/',
+                },
+            },
+            ],
         },
         ],
     },
-};
+    };
 
