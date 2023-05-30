@@ -1,5 +1,5 @@
 // imports 
-
+    import { getSearchLocationData } from "./fetch-data.js";
 
 
 
@@ -8,6 +8,8 @@
 ///////////build page based on data passed through function as argument.//////////////////////////////////////////
 
     function buildPageSkeleton(relativeData) {
+        // delete old page
+        document.body.innerHTML = "";
         // create elements
         const searchDiv = document.createElement("div");
         searchDiv.classList.add("search-div");
@@ -25,8 +27,9 @@
             searchBtn.id = "search-button";
             searchBtn.textContent = "Search";
             searchDiv.appendChild(searchBtn);
-            searchBtn.addEventListener("click", () => {
-                console.log("page now being filled out with search field data(run build again with search location data as argument)")
+            searchBtn.addEventListener("click", async () => {
+                let data = await getSearchLocationData(searchInput.value);
+                buildPageSkeleton(data);
             }
             )
     
@@ -49,7 +52,7 @@
             const currentIcon = document.createElement("img");
             currentIcon.classList.add("current-icon");
             currentIcon.id = "current-icon";
-            // currentIcon.src = relativeData[0].current.condition.icon;
+            currentIcon.src = relativeData[0].current.condition.icon;
             dashBoardDiv.appendChild(currentIcon);
     
             const locationNameDiv = document.createElement("div");
@@ -83,7 +86,7 @@
                 const currentTempLogo = document.createElement("img");
                 currentTempLogo.classList.add("current-temp-logo");
                 currentTempLogo.id = "current-temp-logo";
-                // currentTempLogo.src = "https://img.icons8.com/ios/50/000000/temperature.png";
+                currentTempLogo.src = "https://img.icons8.com/ios/50/000000/temperature.png";
                 currentTempDiv.appendChild(currentTempLogo);
     
             const currentConditionDiv = document.createElement("div");
@@ -110,7 +113,7 @@
                 const forecastDay1Icon = document.createElement("img");
                 forecastDay1Icon.classList.add("forecast-day1-icon");
                 forecastDay1Icon.id = "forecast-day1-icon";
-                // forecastDay1Icon.src = relativeData[1].forecast.forecastday[0].day.condition.icon;
+                forecastDay1Icon.src = relativeData[1].forecast.forecastday[1].day.condition.icon;
                 forecastDay1Div.appendChild(forecastDay1Icon);
     
                 const forecastDay1Day = document.createElement("h2");
@@ -127,7 +130,7 @@
                 const forecastDay2Icon = document.createElement("img");
                 forecastDay2Icon.classList.add("forecast-day2-icon");
                 forecastDay2Icon.id = "forecast-day2-icon";
-                // forecastDay2Icon.src = relativeData[1].forecast.forecastday[1].day.condition.icon;
+                forecastDay2Icon.src = relativeData[1].forecast.forecastday[2].day.condition.icon;
                 forecastDay2Div.appendChild(forecastDay2Icon);
     
                 const forecastDay2Day = document.createElement("h2");
@@ -144,7 +147,7 @@
                 const forecastDay3Icon = document.createElement("img");
                 forecastDay3Icon.classList.add("forecast-day3-icon");
                 forecastDay3Icon.id = "forecast-day3-icon";
-                // forecastDay3Icon.src = relativeData[1].forecast.forecastday[2].day.condition.icon;
+                forecastDay3Icon.src = relativeData[1].forecast.forecastday[3].day.condition.icon;
                 forecastDay3Div.appendChild(forecastDay3Icon);
     
                 const forecastDay3Day = document.createElement("h2");
@@ -161,7 +164,7 @@
                 const forecastDay4Icon = document.createElement("img");
                 forecastDay4Icon.classList.add("forecast-day4-icon");
                 forecastDay4Icon.id = "forecast-day4-icon";
-                // forecastDay4Icon.src = relativeData[1].forecast.forecastday[3].day.condition.icon;
+                forecastDay4Icon.src = relativeData[1].forecast.forecastday[4].day.condition.icon;
                 forecastDay4Div.appendChild(forecastDay4Icon);
     
                 const forecastDay4Day = document.createElement("h2");
@@ -178,7 +181,7 @@
                 const forecastDay5Icon = document.createElement("img");
                 forecastDay5Icon.classList.add("forecast-day5-icon");
                 forecastDay5Icon.id = "forecast-day5-icon";
-                // forecastDay5Icon.src = relativeData[1].forecast.forecastday[4].day.condition.icon;
+                forecastDay5Icon.src = relativeData[1].forecast.forecastday[5].day.condition.icon;
                 forecastDay5Div.appendChild(forecastDay5Icon);
     
                 const forecastDay5Day = document.createElement("h2");
